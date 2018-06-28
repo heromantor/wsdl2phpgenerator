@@ -171,7 +171,7 @@ class Service implements ClassGenerator
             }
         }
 
-        $source .= '  $options = array_merge(' . var_export($this->config->get('soapClientOptions'), true) . ', $options);' . PHP_EOL;
+        $source .= '  $options = array_merge(' . var_export($soap_client_options, true) . ', $options);' . PHP_EOL;
         $source .= '  if (!$wsdl) {' . PHP_EOL;
         $source .= '    $wsdl = \'' . $this->config->get('inputFile') . '\';' . PHP_EOL;
         $source .= '  }' . PHP_EOL;
