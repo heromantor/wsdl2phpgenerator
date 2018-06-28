@@ -162,6 +162,15 @@ class Service implements ClassGenerator
       $options[\'classmap\'][$key] = $value;
     }
   }' . PHP_EOL;
+
+        $soap_client_options = $this->config->get('soapClientOptions');
+
+        foreach($soap_client_options as $k => $v) {
+            if('password' === $k || 'login' === $k) {
+                unset($soap_client_options[$k]);
+            }
+        }
+
         $source .= '  $options = array_merge(' . var_export($this->config->get('soapClientOptions'), true) . ', $options);' . PHP_EOL;
         $source .= '  if (!$wsdl) {' . PHP_EOL;
         $source .= '    $wsdl = \'' . $this->config->get('inputFile') . '\';' . PHP_EOL;
