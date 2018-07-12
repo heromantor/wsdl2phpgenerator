@@ -128,9 +128,9 @@ class Validator
                 $isKeywordMethod = new \ReflectionMethod(__CLASS__, 'isKeyword');
                 $isKeywordMethod->setAccessible(true);
                 $isKeyword = $isKeywordMethod->invoke(null, $name);
-             return !$isKeyword &&
-                !interface_exists($prefix . $name) &&
-                !class_exists($prefix . $name);
+             return !$isKeyword;// &&
+                //!interface_exists($prefix . $name) &&
+                //!class_exists($prefix . $name);
         }, self::NAME_SUFFIX);
 
         return $name;
